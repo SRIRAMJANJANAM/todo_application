@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <div class="container">
+        <center>
+            <h1 id="mytodo">Sri Ram  To-Do List Application</h1>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <textarea readonly>{{ forloop.counter }}. {{ task }}</textarea>
+                <a href="{% url 'edit_task' forloop.counter %}" id="editing">
+                    <img src="{% static 'images/edit.png' %}" alt="" width="25px">
+                </a>
+                <a href="{% url 'delete_task' forloop.counter %}" id="delete"><img src="{% static 'images/delete.png' %}" alt="" width="20px"></a>
+            </li> <br>
+        {% endfor %}
+    </ul>
+   <a href="{% url 'add_task' %}" ><img src="{% static 'images/add.png' %}" alt="" width="85px" id="add"></a>
+        </center>
+    </div>
+</body>
+</html>
